@@ -36,6 +36,7 @@ local.properties
 .loadpath
 .factorypath
 /src/main/resources/rebel.xml
+.springBeans
 
 # External tool builders
 .externalToolBuilders/**
