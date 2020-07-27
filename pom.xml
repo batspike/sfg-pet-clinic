@@ -73,4 +73,10 @@
             </plugin>
         </plugins>
     </build>
+
+	<scm>
+		<developerConnection>scm:https://github.com/batspike/sfg-pet-clinic.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+    
 </project>
