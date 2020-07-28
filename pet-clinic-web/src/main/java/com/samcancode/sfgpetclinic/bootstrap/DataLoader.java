@@ -7,17 +7,15 @@ import com.samcancode.sfgpetclinic.model.Owner;
 import com.samcancode.sfgpetclinic.model.Vet;
 import com.samcancode.sfgpetclinic.services.OwnerService;
 import com.samcancode.sfgpetclinic.services.VetService;
-import com.samcancode.sfgpetclinic.services.map.OwnerServiceMap;
-import com.samcancode.sfgpetclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
 	private final OwnerService ownerService;
 	private final VetService vetService;
-	public DataLoader() {
-		this.ownerService = new OwnerServiceMap();
-		this.vetService = new VetServiceMap();
+	public DataLoader(OwnerService ownerService, VetService vetService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
 	}
 
 
