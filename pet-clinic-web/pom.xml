@@ -11,6 +11,22 @@
 	<name>pet-clinic-web</name>
 	<description>Web module for sfg-pet-clinic</description>
 
+  <properties>
+    <!-- Generic properties -->
+    <java.version>14</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!-- Web dependencies -->
+    <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+    <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
+    <webjars-jquery.version>2.2.4</webjars-jquery.version>
+    <wro4j.version>1.8.0</wro4j.version>
+
+    <jacoco.version>0.8.5</jacoco.version>
+    <nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
+    <spring-format.version>0.0.22</spring-format.version>
+  </properties>
 
 
 	<dependencies>
@@ -19,6 +35,8 @@
 			<artifactId>pet-clinic-data</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<!-- Spring and Spring Boot dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -37,6 +55,30 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
+	    <!-- webjars -->
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>webjars-locator-core</artifactId>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>jquery</artifactId>
+	      <version>${webjars-jquery.version}</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>jquery-ui</artifactId>
+	      <version>${webjars-jquery-ui.version}</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>bootstrap</artifactId>
+	      <version>${webjars-bootstrap.version}</version>
+	    </dependency>
+	    <!-- end of webjars -->
+		
+		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -55,5 +97,40 @@
 		</dependency>
 	</dependencies>
 
-
+	<build>
+		<plugins>
+			<plugin>
+			  <groupId>ro.isdc.wro4j</groupId>
+			  <artifactId>wro4j-maven-plugin</artifactId>
+			  <version>${wro4j.version}</version>
+			  <executions>
+			    <execution>
+			      <phase>generate-resources</phase>
+			      <goals>
+			        <goal>run</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			  <configuration>
+			    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+			    <cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
+			    <wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
+			    <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
+			    <contextFolder>${basedir}/src/main/less</contextFolder>
+			  </configuration>
+			  <dependencies>
+			    <dependency>
+			      <groupId>org.webjars</groupId>
+			      <artifactId>bootstrap</artifactId>
+			      <version>${webjars-bootstrap.version}</version>
+			    </dependency>
+			    <dependency>
+			      <groupId>org.mockito</groupId>
+			      <artifactId>mockito-core</artifactId>
+			      <version>${mockito.version}</version>
+			    </dependency>
+			  </dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
