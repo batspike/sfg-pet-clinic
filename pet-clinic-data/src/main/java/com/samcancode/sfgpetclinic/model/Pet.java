@@ -36,7 +36,7 @@ public class Pet extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Pet [name=" + name + ", petType=" + petType + ", owner=" + owner + ", birthDate=" + birthDate + "]";
+		return "Pet [id="+ getId() + ", name=" + name + ", petType=" + petType + ", owner=" + owner + ", birthDate=" + birthDate + "]";
 	}
 	
 	

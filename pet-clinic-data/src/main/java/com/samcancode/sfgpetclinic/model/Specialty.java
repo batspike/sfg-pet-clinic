@@ -1,6 +1,8 @@
 package com.samcancode.sfgpetclinic.model;
 
 public class Specialty extends BaseEntity {
+	private static final long serialVersionUID = 1L;
+	
 	private String description;
 
 	public String getDescription() {
@@ -9,6 +11,11 @@ public class Specialty extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Specialty [id="+ getId() + " : " + description + "]";
 	}
 	
 	
