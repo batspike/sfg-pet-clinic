@@ -1,8 +1,15 @@
 package com.samcancode.sfgpetclinic.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="specialties")
 public class Specialty extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	
+	@Column(name="desciption")
 	private String description;
 
 	public String getDescription() {
