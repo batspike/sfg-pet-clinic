@@ -1,13 +1,17 @@
 package com.samcancode.sfgpetclinic.model;
 
 import java.io.Serializable;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass //tells JPA to reat this as ordinary class, not entity
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@MappedSuperclass //tells JPA to treat this as ordinary class, not entity
 public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -15,12 +19,13 @@ public class BaseEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public BaseEntity(Long id) {
+		super();
 		this.id = id;
 	}
-	
+
+	public BaseEntity() {
+		super();
+	}
+
 }
